@@ -1,0 +1,14 @@
+on:
+  schedule:
+  - cron: '30 12 * * *'
+  - cron: '35 12 * * *'
+
+jobs:
+  test-schedule:
+    runs-on: ubuntu-latest
+    steps:
+    - name: see whether it will run 12
+      if: github.event.schedule != '30 12 * * *'
+      run: echo "jest 12:30"
+    - name: second event
+      run: echo "to sie wykona w obu przypadkach"
